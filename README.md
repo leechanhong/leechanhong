@@ -1,3 +1,7 @@
+#### 20201116 (월) 작업예정
+- HomeController.java 분석 후 수정
+- 파스타 클라우드에 스프링MVC프로젝트 올리기 후 도메인으로 접속 확인예정.
+- http://leechanhong.paas-ta.org/ 접속 확인
 #### 20201113 (금)
 - 스프링 MVC구조 중 Controller단 HomeController.java 클래스를 분석해 보겠습니다.
 - ==============MVC구조중 컨트롤러단 분석(아래)================
