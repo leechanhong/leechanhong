@@ -1,0 +1,8 @@
+---
+applications:
+- name: leechanhong
+  memory: 1024M
+  disk_quota: 1024M
+  instances: 1
+  host: leechanhong
+  domain: paas-ta.org
