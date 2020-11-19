@@ -27,6 +27,15 @@ float:right;
 display:block;height:10px;width:50px;background-color:red;
 margin-bottom:10px;
 }
+.header .gnb {
+display:block;/*페이지로딩할때 숨겨야 하기 때문에 none으로 처리*/
+position:absolute;/*gnb영역의 위치를 절대위치로 지정. 위치정보가 필요*/
+top:80px;
+left:0px;
+width:100%;
+background:#3f51b5;
+z-index:21;/*화면에서  콘텐츠가 겹치는 경우 z-index*/
+}
 /* 헤더영역 끝 */
 /* 본문섹션 슬라이드영역 시작 */
 #wrap .slider img {width:100%;}/*Cascade Style Sheet 특징 계단형 스타일지정 
