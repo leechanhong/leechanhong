@@ -1,3 +1,29 @@
+#### 20201120(금) 작업예정
+CDN(Contents Delivery Network): 콘텐츠를 네트워크로 전달받아서 사용하는 방식.
+어제 수업시 작동않되던 네이티브 자바스크립트 사용예시
+document.getElementsByClassName는 배열값을 리턴
+document.getElementById는 1개값를 리턴
+window.onload = prepareButton;
+function prepareButton() {
+	var toggle_btn = document.getElementsByClassName("menu-toggle-btn");
+	toggle_btn[0].onclick = function(){
+		alert("햄버거메뉴를 클릭했습니다.");
+	}
+}
+CDN jQuery코어 받기 다시한번 강의.
+$(".gnb").stop().slideToggle("fast"); j쿼리 토글메뉴 예시
+작업순서1: html만들고, 더미데이터 생성.
+작업순서2: body에서 레이아웃을 3가지 영역분리 header, section, footer.
+*작업순서3: header영역의 3가지영역(로고, 햄버거메뉴, 글로벌네비메뉴)를 배치작업.
+작업순서4: 로고의 세부영역 디자인.
+작업순서5: 햄버거메뉴 영역의 세부디자인.
+작업순서6: 글로벌네비메뉴 영역의 세부디자인.
+작업순서7: 자바스크립트로 햄버거메뉴의 토글기능 구현.
+작업순서8: 본문section영역 세부디자인(슬라이드부분 J쿼리로 구현-PC용 CSS까지 작업 후 적용).
+작업순서9: footer 영역 세부 디자인.
+작업순서10: 마무리. home(index.html)메뉴의 작업 테스트 확인.
+1페이지 모바일용 CSS작업이 마무리되면, reset.css처럼 외부로 css파일을 분리하는 작업이 있습니다.
+1페이지 모바일용 작업 후, 태블릿용, PC용 디자인 추가 합니다.
 #### 20201119(목) 작업
 - 자바스크립트: 종류 2가지입니다.(아래)
 - 네이티브자바스크립트(고전): 오늘 배우고..
