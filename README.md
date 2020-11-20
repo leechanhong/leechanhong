@@ -1,8 +1,16 @@
 #### 20201120(금) 작업예정
-CDN(Contents Delivery Network): 콘텐츠를 네트워크로 전달받아서 사용하는 방식.
-어제 수업시 작동않되던 네이티브 자바스크립트 사용예시
-document.getElementsByClassName는 배열값을 리턴
-document.getElementById는 1개값를 리턴
+- 프로그램에서 대소문자, -, _ 에  대해서 설명드리겠습니다.(아래)
+- 우선 DB에서는 테이블명, 필드명 모두 소문자로 표시 합니다.(선택적 필수)
+- 자바스크립트, 스프링(자바)에서는 변수/함수명, 클래스명 2가지로 나눕니다.(아래)
+- 우선 클래스명은 대문자로 시작합니다.(필수)
+- 변수/함수명은 소문자로 시작합니다.(선택적 필수)
+- 특히 CSS에서는 클래스명에 - 이 가능합니다. 단, j쿼리(자바스크립트)에서는 변수/함수명에 -(하이픈)이 들어가면 안됩니다.
+-CDN(Contents Delivery Network): 콘텐츠를 네트워크로 전달받아서 사용하는 방식.
+-어제 수업시 작동않되던 네이티브 자바스크립트 사용예시
+-document.getElementsByClassName는 배열값을 리턴
+-document.getElementById는 1개값를 리턴
+
+```
 window.onload = prepareButton;
 function prepareButton() {
 	var toggle_btn = document.getElementsByClassName("menu-toggle-btn");
@@ -10,6 +18,7 @@ function prepareButton() {
 		alert("햄버거메뉴를 클릭했습니다.");
 	}
 }
+```
 CDN jQuery코어 받기 다시한번 강의.
 $(".gnb").stop().slideToggle("fast"); j쿼리 토글메뉴 예시
 작업순서1: html만들고, 더미데이터 생성.
