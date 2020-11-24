@@ -119,8 +119,9 @@ text-align:center;
 margin-top:30px;
 }
 .work-section li img {width:100%;}
-.work-section li a{/*이부분이 실제 a태그 영역*/
-display:block;/*a 태그가 자리를 차지하지 않는 영역이고, block을 이용해서 자리를 차지하는 영역으로 변경(아래)*/
+.work-section li a {/*이부분이 실제 a태그 영역*/
+/*a 태그가 자리를 차지하지 않는 영역이고, block을 이용해서 자리를 차지하는 영역으로 변경(아래)*/
+display:block;
 width:100%;
 height:100%;
 position:relative;/*a태그에서 위치를 상대위치로 지정*/
@@ -129,11 +130,11 @@ position:relative;/*a태그에서 위치를 상대위치로 지정*/
 .work-section li a::before {
 display:block;
 background:#3f51b5;
-position:absolute;	
-/*이 절대값 위치는 위 a태그에서 지정한 relative상대위치에  한정해서 절대위치로 지정됨(아래)*/
+/*이 절대값 위치는 위 a태그에서 지정한 relative상대위치에 한정해서 절대위치로 지정됨(아래)*/
+position:absolute;
 width:100%;
 height:100%;
-top:0px;/*화면의 상단 위쪽으로 0px위치*/
+top:0px;/*화면의 세로 위쪽으로 0px위치*/
 left:0px;/*화면가로로 0px위치*/
 content:"";
 opacity:0;/*투명도 0%로 지정*/
@@ -148,9 +149,9 @@ left:10px;
 color:#fff;
 text-align:left;
 opacity:0;
-transition:all 0.3s;/*화면전환 옵션 transform 모양변화에대한 화면전환옵션, width, height등등 all.. */
+transition:all 0.3s;/*화면전환 옵션 transform 모양변화에대한 화면전환옵션, width, height등등 all... */
 }
-.work-section li a:hover .info {
+.work-section li a:hover .info{
 opacity:1;
 transform:translateY(20px);/*모양이 변화할때 Y세로축으로 20px 이동합니다.*/
 }
@@ -211,7 +212,7 @@ font-weight:normal;
 }
 .contact-section .container {
 width:90%;
-margin:0px auto;/*가운데정렬*/
+margin:0 auto;/*가운데정렬 30px auto 0px; */
 margin-top:30px;
 }
 .contact-section label {
@@ -223,7 +224,7 @@ line-height:1.2;
 padding:0 2px;
 height:40px;
 border:none;/*테두리 삭제*/
-border-bottom:2px solid #ccc;/* 테두리 선설정: 2px굵기,solid실선,dotted점선,선색상 */
+border-bottom:2px solid #ccc;/* 테두리 선설정:굵기,solid실선,dotted점선 ,선색상 */
 background:transparent;/*배경색상 투명처리*/
 }
 .contact-section form textarea {
@@ -232,7 +233,7 @@ background:transparent;
 line-height:1.2;
 border:none;
 border-bottom:2px solid #ccc;
-min-height:100px;/*최소높이를 지정하는 이유는 내용이 없더라도, 높이를 150px로 지정하는 의미*/
+min-height:100px;/*최소높이를 지정하는 이유는 내용이 없더라도, 높이를 100px로 고정하는 의미*/
 padding-top:10px;
 padding-bottom:10px;
 }
@@ -244,6 +245,7 @@ color:#fff;
 border:0px;
 }
 .submit-btn {
+margin-top:10px;
 text-align:right;/*div영역안쪽의 내용을 좌우 정렬시키는 명령*/
 }
 /* contact 영역 끝 */
