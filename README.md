@@ -1,4 +1,10 @@
 #### 20201125(수) 작업
+- 유스케이스다이어그램(이클립스): 관계(릴레이션-Relation)
+- 관계: Generalization(일반화) - 부모-자식(상속관계)
+- 관계 일반화란? 자식들(SUV, 소형, 중형차, 대형차)-extend -> 자동차(일반화-부모)-generalize
+- 관계 include? 포함관계,footer.jsp(하단Logo) --> home.jsp <-- header.jsp(상단메뉴,로고포함)
+- 관계 extend? 확장관계(상속관계)
+----------------------------------------------------------
 - NCS학습모듈(화면구현) 단원1 OK.
 - HTML(Hyper-Text-Markup-Language)+CSS(Cascade-Style-Sheet)+JS(Java-Script)
 - 위 3가지 작업으로 결과물을 만드는 사람 퍼블리셔 라고 함.=프론트앤드 개발자.
