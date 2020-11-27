@@ -3,6 +3,7 @@
 
 <%@ include file="./include/header.jsp" %>
 
+
 <section class="weare-section"><!-- division디비전이라는 div 영역표시 태그 대신에 사용 -->
 
 <section class="weare-header">
@@ -48,4 +49,5 @@
 
 </section>
 
-<%@ include file="./include/footer.jsp" %>  
+
+<%@ include file="./include/footer.jsp" %>

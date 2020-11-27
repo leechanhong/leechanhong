@@ -11,7 +11,7 @@
 <!-- input 한줄입력 태그, textarea 여러줄입력 태그 -->
 <!-- label은 이름표, 입력태그와 라벨은 1:1매칭이 되는 관계 -->
 <form name="message_form" action="/contact" method="post">
-<!-- 스프링에서는 action으로 폼데이터를 전송할 위치를 지정할때, contact.html직접X /contact처럼 컨트롤러를 통해O -->
+<!-- 스프링에서는 action으로 폼데이터를 전송할 위치를 지정할때, contact.html직접X /contact처럼 컨트롤러를 통해OK  -->
 <!-- 필드셋은 폼이 DB테이블의 필드와 1:1매칭되는 관계 -->
 <!-- 플레이스홀더:공간에 자리를 차지하지 않으면서 입력힌트를 보여주는 역할 -->
 <fieldset>
@@ -34,11 +34,12 @@
 <button type="submit">메세지보내기</button>
 </div>
 </form>
-<!-- form 태그의 목적은 input, textarea, checkbox, radio, select데이터를
+<!-- form 태그의 목적은 input,textarea,checkbox,radio,select 데이터를 
 submit(전송)하는것이 목적. -->
 <!-- 폼전송은 get(비보안용), post(보안용-입력/수정/삭제) -->
-<!-- get방식은 유일하게 검색할 때 사용됩니다. -->
+<!-- get방식은 유일하게 검색할때 사용됩니다. -->
 </div>
 </section>
+
 
 <%@ include file="./include/footer.jsp" %>
