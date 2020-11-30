@@ -11,6 +11,12 @@
 - dist: distribute(배포)하는 폴더명, 이 폴더만 있으면 실행이 가능합니다.
 - 그래픽이미지 2가지: 비트맵 이미지(jpg, gif, png 이런이미지는 화면을 확대하면 깨짐,이미지1개면 끝), 벡터 이미지(화면을 확대해도 깨지지 않음, 스크립트코드로  만들어진 이미지).
 
+```
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="210" height="210">
+  <rect x="5" y="5" width="200" height="200" style="fill:red; stroke:black; stroke-width:10px"></rect>
+</svg>
+```
+- SVG이미지는 개발자 입장에선, 안드로이드 스튜디오에서 버튼또는 이미지만들때 사용. xml로 만듭니다.
 - AdminLTE를 사용하면, 좋은 이유(아래)
 - font어썸제공. 사용예, <i class="fa fa-cc-visa" style="color:red;"></i>
 - IFrame(아이프레임): 이 태그를 사용하면, 예전 프로그래머라고 생각하시면, 안됩니다.
