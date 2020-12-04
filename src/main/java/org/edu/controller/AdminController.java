@@ -36,14 +36,20 @@ public class AdminController {
 		//그 요청을 컨트롤러에서 받은건가요?
 		//위에서 수신한 user_id를 개발자가 만든 user_id2이름으로 member_view.jsp 보냅니다.(아래)
 		//member_view.jsp에서 model로 수신한 데이터 user_id2 를 출력하는 방법은 점심 이후에...
-		
+
 		model.addAttribute("user_id2", user_id + "<script>alert('메롱');</script> 님");
 		return "admin/member/member_view";
 	}
 	
 	@RequestMapping(value="/admin/member/member_list",method=RequestMethod.GET)
-	public String member_list() {
-		return "admin/member/member_list";
+	public String member_list(Model model) {
+		String[][] members = {
+				{"admin","찐관리자","admin@abc.com","true","2020-12-04","ROLE_ADMIN"},
+				{"user","일반사용자","user@abc.com","false","2020-12-04","ROLE_USER"}
+		};
+		//{"user_id":"admin","user_name":"관리자",...} 해시데이터(그물-낚시)
+		model.addAttribute("members", members);
+		return "admin/member/member_list";//member_list.jsp 로 members변수명으로 데이터를 전송
 	}
 	
 	//bind:묶는다는 의미, /admin 요청URL경로와 admin/home.jsp를 묶는다는 의미.
