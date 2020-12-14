@@ -1,3 +1,4 @@
+  
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <!-- 
@@ -13,13 +14,5 @@ memberMapper.xml: 회원관리에대한 모든 쿼리를 모아서 관리하는 
 <select id="selectMember" resultType="org.edu.vo.MemberVO">
 select * from tbl_member 
 </select>
-
-<insert id="">
-
-</insert>
-
-<delete id="">
-
-</delete>
 
 </mapper>
