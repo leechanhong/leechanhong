@@ -26,7 +26,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * 제이유닛4클래스를 사용.
  * 단위테스트는 톰캣이 실행되지 않아도 작동이 되야 합니다.
  * 그래서, 테스트 클래스 상단에 servelet-context.xml 이러한 설정파일을 불러들여서 실행이 가능
- * @author 이찬홍
+ * @author 김일국
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -40,12 +40,26 @@ public class DataSourceTest {
 	@Inject
 	IF_MemberDAO memberDAO;
 	
+	//@Inject//사용하면 않되는 이유: 클래스상단에 @Controller, @Service, @Repository 이런내용만 @Inject합니다.
+	//MemberVO memberVO;//기존자바처럼 new MemberVO() 오브젝트를 생성하지않고, 주입해서사용. 
+	
 	public String memberPrimaryKey() {
 		//사용자 프라이머리키 생성하는 메서드 년월일시분처 + 밀리초
 		Date primaryKey = new Date();
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		System.out.println("프라이머리키 : " + newFormat.format(primaryKey));
 		return "user_" + newFormat.format(primaryKey);
+	}
+	
+	@Test
+	public void updateMember() throws Exception {
+		//CRUD 중 Update 테스트 구현 특징, user_id는 프라이커리키 이기 때문에 수정대상이 아닙니다.
+		MemberVO memberVO = new MemberVO();
+		memberVO.setEmail("test@test.com");
+		memberVO.setUser_name("아무개");
+		memberVO.setUser_id("admin");
+		String user_id = memberVO.getUser_id();//memberVO의 오브젝트의 데이터는 1개의 레코드이기때문에 반환값이 1개만
+		
 	}
 	
 	@Test
