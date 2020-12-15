@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 게시판에서 사용되는 데이터 입출력 클래스
- * @author 이찬홍
+ * @author 김일국
  *
  */
 public class BoardVO {

@@ -19,9 +19,9 @@ class MyThread extends Thread {
 	public MyThread(String szName) {
 		super(szName);
 	}
-	public void run() {//MyThread스레드를 start()호출해야지만, 자동실행되는 메서드
+	public void run() {//MyThread스레드를 start()호출해야지만, 자동실행되는 메서드 
 		for(int cnt=0;cnt<100;cnt++) {
-			System.out.println(this.getName() + " ");
+			System.out.print(this.getName() + " ");
 		}
 	}
 }

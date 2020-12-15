@@ -4,7 +4,7 @@ import java.util.Date;
 
 /**
  * 회원정보관리용 클래스
- * @author 이찬홍 2020-12-04 생성
+ * @author 김일국 2020-12-04 생성
  *
  */
 public class MemberVO {

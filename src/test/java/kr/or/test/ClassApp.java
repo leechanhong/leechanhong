@@ -14,9 +14,9 @@ public class ClassApp {
 		//Circle클래스를 c 이름으로 prefix해서 사용하는 겁니다.
 		//자바프로그램의 특징은 OOP프로그래밍의 대표적인 사례, Object=위 에서 new키워드로 생성한 c 오브젝트,
 		//자바에서 OOP 를 사용방식을 설명하는 예, 스프링에서는 new키워드대신 @Inject를 주로 사용.
-		double print_result = c.getLeechanhong();
+		double print_result = c.getKimilguk();
 		//System.out.println("첫번째 원의 넓이는 " + print_result + " 입니다.");
-		double print_result2 = c2.getLeechanhong();
+		double print_result2 = c2.getKimilguk();
 		//System.out.println("두번째 원의 넓이는 " + print_result2 + " 입니다.");
 		//아래 new 키워드 생성자를 이용해서 오브젝트를 2개 만들었음. 
 		Employee employee = new Employee();
@@ -81,7 +81,7 @@ class Circle {
 	public Circle(int a) {//생성자매서드 a인자=매개변수=파라미터 값은 new키워드로 오브젝트 만들어질때 발생
 		r = a;
 	}
-	public double getLeechanhong() {
+	public double getKimilguk() {
 		return r*r*3.14;//원의 넓이를 반환
 	}
 }

@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 /**
  * 외부Enum클래스를 이용해서 열거형 자료형 테스트
- * @author 이찬홍
+ * @author 김일국
  *
  */
 public class Step3 {

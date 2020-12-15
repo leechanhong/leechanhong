@@ -7,7 +7,7 @@ import org.edu.vo.MemberVO;
 
 /**
  * 자바에서 예외처리하는 테스트 클래스
- * @author kick3
+ * @author User
  *
  */
 public class ExceptionTest {
@@ -16,9 +16,9 @@ public class ExceptionTest {
 		//toString메서드에 대해서...
 		MemberVO memberVO = new MemberVO();//jsp폼데이터를 set으로저장, get으로출력.
 		//멤버클래스에 값을 입력해 봅니다. 메모리DB에 입력합니다.
-		memberVO.setUser_id("leechanhong");
-		memberVO.setUser_name("이찬홍");
-		memberVO.setEmail("leechanhong@abc.com");
+		memberVO.setUser_id("kimilguk");
+		memberVO.setUser_name("김일국");
+		memberVO.setEmail("kimilguk@abc.com");
 		System.out.println("회원정보 클래스의 멤버변수 값들을 출력하기 = " 
 		+ memberVO.getUser_name()
 		+ memberVO.toString()
