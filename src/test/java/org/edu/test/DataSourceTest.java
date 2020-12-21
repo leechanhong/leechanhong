@@ -13,6 +13,7 @@ import javax.sql.DataSource;
 
 import org.edu.dao.IF_MemberDAO;
 import org.edu.vo.MemberVO;
+import org.edu.vo.PageVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,7 +27,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * 제이유닛4클래스를 사용.
  * 단위테스트는 톰캣이 실행되지 않아도 작동이 되야 합니다.
  * 그래서, 테스트 클래스 상단에 servelet-context.xml 이러한 설정파일을 불러들여서 실행이 가능
- * @author 김일국
+ * @author 이찬홍
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -103,7 +104,13 @@ public class DataSourceTest {
 	
 	@Test
 	public void selectMember() throws Exception {
-		List<MemberVO> memberList =	memberDAO.selectMember("user_name","길동");
+		PageVO pageVO = new PageVO();
+		pageVO.setSearch_type("user_name");
+		pageVO.setSearch_keyword("길동");
+		pageVO.setPage(1);
+		pageVO.setQueryStartNo(0);//쿼리에서 시작인덱스번호변수값
+		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 회원수 10명으로 입력 놓았습니다.
+		List<MemberVO> memberList =	memberDAO.selectMember(pageVO);
 		System.out.println("회원리스트 테스트 입니다.");
 		System.out.println(memberList.toString());
 	}
