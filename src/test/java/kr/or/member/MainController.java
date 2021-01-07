@@ -12,6 +12,9 @@ import java.util.Date;
 import org.apache.commons.net.ntp.NTPUDPClient;
 import org.apache.commons.net.ntp.TimeInfo;
 
+import kr.or.member.MemberService;
+import kr.or.member.MemberVO;
+
 public class MainController {
 
 	public static void main(String[] args) throws IOException {
@@ -28,6 +31,12 @@ public class MainController {
 		memberVO3.setName("각시탈");
 		memberVO3.setAge(28);
 		memberVO3.setPhoneNum("222-2222-2222");
+		
+		if(memberVO2 == memberVO3) {
+			System.out.println("동일객체=인스턴스");
+		}else {
+			System.out.println("다른오브젝트");
+		}
 		// 위 각각 3개의 레코드를 1군데 담을 배열 클래스오브젝트를 하나 생성(아래)
 		MemberVO[] members = new MemberVO[3];
 		members[0] = memberVO;
