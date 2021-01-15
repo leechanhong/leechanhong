@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.inject.Inject;
 import javax.sql.DataSource;
@@ -16,6 +17,7 @@ import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -45,11 +47,21 @@ public class DataSourceTest {
 	MemberVO memberVO;//기존자바처럼 new MemberVO() 오브젝트를 생성하지않고, 주입해서사용. 
 	
 	public String memberPrimaryKey() {
-		//사용자 프라이머리키 생성하는 메서드 년월일시분처 + 밀리초
+		//사용자 프라이머리키 생성하는 메서드 년월일시분처 + 밀리초 대량더미데이터입력시Uniq에러발생-> Math.ramdom로 변경
+		/*
 		Date primaryKey = new Date();
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		System.out.println("프라이머리키 : " + newFormat.format(primaryKey));
-		return "user_" + newFormat.format(primaryKey);
+		return "dummy_" + newFormat.format(primaryKey);
+		*/
+		PageVO pageVO = new PageVO();
+		pageVO.setPage(1);
+		pageVO.setPerPageNum(8);//리스트하단에 보이는 페이징번호의 개수
+		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 게시물수 10개로 입력 놓았습니다.
+		//검색된 전체 게시물수 구하기 서비스 호출
+		int countMember = 0;
+		countMember = 0;
+		return "dummy_";
 	}
 	
 	@Test
@@ -91,15 +103,18 @@ public class DataSourceTest {
 		String memberIdKey = memberPrimaryKey();
 		memberVO.setUser_id(memberIdKey);
 		memberVO.setUser_name("사용자03");
-		//패스워드 암호화 처리(필수이지만, 스프링 시큐리티 할때 처리 예정)
-		memberVO.setUser_pw("1234");
+		//패스워드 암호화 처리(필수이지만, 스프링 시큐리티 엔코더처리 아래)
+		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+		memberVO.setUser_pw(passwordEncoder.encode("1234"));
 		memberVO.setEmail("user03@abc.com");
 		memberVO.setPoint(100);
 		memberVO.setEnabled(true);
 		memberVO.setLevels("ROLE_USER");
 		Date reg_date = new Date();
 		memberVO.setReg_date(reg_date);//매퍼쿼리에서 처리로 대체
-		memberDAO.insertMember(memberVO);
+		for(int cnt=0;cnt<=100;cnt++) {//더미사용자 100명 입력
+			memberDAO.insertMember(memberVO);
+		}		
 	}
 	
 	@Test
