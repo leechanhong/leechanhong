@@ -3,7 +3,10 @@ package org.edu.test;
 import static org.junit.Assert.*;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +15,9 @@ import java.util.UUID;
 import javax.inject.Inject;
 import javax.sql.DataSource;
 
+import org.edu.dao.IF_BoardDAO;
 import org.edu.dao.IF_MemberDAO;
+import org.edu.vo.BoardVO;
 import org.edu.vo.MemberVO;
 import org.edu.vo.PageVO;
 import org.junit.Test;
@@ -43,11 +48,14 @@ public class DataSourceTest {
 	@Inject
 	IF_MemberDAO memberDAO;
 	
+	@Inject
+	IF_BoardDAO boardDAO;
+	
 	@Inject//사용하면 않되는 이유: 클래스상단에 @Controller, @Service, @Repository, @Component 이런내용만 @Inject합니다.
 	MemberVO memberVO;//기존자바처럼 new MemberVO() 오브젝트를 생성하지않고, 주입해서사용. 
 	
-	public String memberPrimaryKey() {
-		//사용자 프라이머리키 생성하는 메서드 년월일시분처 + 밀리초 대량더미데이터입력시Uniq에러발생-> Math.ramdom로 변경
+	public String memberPrimaryKey() throws Exception {
+		//사용자 프라이머리키 생성하는 메서드 년월일시분처 + 밀리초 대량더미데이터입력시Uniq에러발생->countMember로 변경
 		/*
 		Date primaryKey = new Date();
 		SimpleDateFormat newFormat = new SimpleDateFormat("yyyyMMddHHmmssSSS");
@@ -60,8 +68,8 @@ public class DataSourceTest {
 		pageVO.setQueryPerPageNum(10);//쿼리에서 1페이지당 보여줄 게시물수 10개로 입력 놓았습니다.
 		//검색된 전체 게시물수 구하기 서비스 호출
 		int countMember = 0;
-		countMember = 0;
-		return "dummy_";
+		countMember = memberDAO.countMember(pageVO);
+		return "dummy_" + (countMember+1);
 	}
 	
 	@Test
@@ -95,13 +103,25 @@ public class DataSourceTest {
 	}
 	
 	@Test
+	public void insertBoard() throws Exception {
+		BoardVO boardVO = new BoardVO();
+		boardVO.setTitle("더미게시물");
+		boardVO.setContent("더미 내용 입니다.");
+		boardVO.setWriter("일반사용자");
+		//boardVO.setBno(프라이머리키);
+		for(int cnt=0;cnt<=100;cnt++) {//더미게시물 100입력
+			boardDAO.insertBoard(boardVO);
+		}
+	}
+	
+	@Test
 	public void insertMember() throws Exception {
 		//CRUD 중 Create 테스트
 		//MemberVO memberVO = new MemberVO();
 		//사용자 생성 규칙: user_ 시작(prefix),suffix(접미사)는 년월일시분초 
 		//사용자 생성결과 예: user_20201215142132
-		String memberIdKey = memberPrimaryKey();
-		memberVO.setUser_id(memberIdKey);
+		//String memberIdKey = memberPrimaryKey();
+		
 		memberVO.setUser_name("사용자03");
 		//패스워드 암호화 처리(필수이지만, 스프링 시큐리티 엔코더처리 아래)
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -113,6 +133,7 @@ public class DataSourceTest {
 		Date reg_date = new Date();
 		memberVO.setReg_date(reg_date);//매퍼쿼리에서 처리로 대체
 		for(int cnt=0;cnt<=100;cnt++) {//더미사용자 100명 입력
+			memberVO.setUser_id(memberPrimaryKey());
 			memberDAO.insertMember(memberVO);
 		}		
 	}
@@ -132,6 +153,38 @@ public class DataSourceTest {
 		System.out.println("회원리스트 테스트 입니다.");
 		System.out.println(memberList.toString());
 	}
+	@Test
+	public void oldQueryTest() throws Exception {
+		//Connection connection = dataSource.getConnection();//root-context사용
+		Connection connection = null;
+		connection = DriverManager.getConnection("jdbc:hsqldb:file:c:/egov/workspace/embeded/hsql_file.db","sa","");
+		/* mysql(마리아DB)
+		 * .getConnection("jdbc:log4jdbc:mysql://127.0.0.1:3306/edu","root","apmsetup");
+		 */
+		//직접 쿼리를 날립니다.(아래)
+		Statement stmt = connection.createStatement();
+		/* 인서트 쿼리실행(아래) 
+		for(int cnt=0;cnt<=100;cnt++) { //고전 방식으로 더미 데이터 입력하기(아래)
+		stmt.executeQuery("INSERT INTO tbl_board VALUES("
+				+ "(select count(*) from tbl_board)+1"
+				+ ",'강제 수정된 글입니다.', '수정 테스트 ', 'user00', now(),now(), 0, 0)");
+		}
+		*/
+		/* 셀렉트 쿼리실행(아래) */
+		ResultSet rs = stmt.executeQuery("select * from tbl_board");
+		System.out.println("번호\t\t제목\t\t내용\t\t작성자");
+		while(rs.next()) {
+			System.out.print(rs.getString("bno"));
+			System.out.print(rs.getString("title"));
+			System.out.print(rs.getString("content"));
+			System.out.print(rs.getString("writer"));
+			System.out.println();
+		}
+		if(rs !=null)rs.close();
+		if(stmt !=null)stmt.close();
+		if(connection !=null)connection.close();
+	}
+	
 	@Test
 	public void dbConnectionTest() throws Exception {
 		try {//내부에서 {} 에러발생시 실행을 중지하고, catch{}구문이 실행 됩니다. 예외처리라고 합니다.
