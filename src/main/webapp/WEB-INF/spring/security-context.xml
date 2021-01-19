@@ -52,7 +52,7 @@
 	<!-- select username,authority from authorities where username = 'admin' 내장쿼리변경 authorities-by-username-query  -->
 		<security:authentication-provider>
 			<security:jdbc-user-service 
-				data-source-ref="dataSource-${DbType}"
+				data-source-ref="dataSource"
 				users-by-username-query="select user_id as no,user_pw as password, enabled from tbl_member where user_id = ?"
 				authorities-by-username-query="select user_id as no,levels as authority from tbl_member where user_id = ?"
 				/>
@@ -77,4 +77,4 @@
 	- 위처럼 'ID고유값"을 salt(소금)라고 얘기합니다.
 	- BCrypt패스워드 엔코더는 salt값이 필요없이, 동일한 user02 암호라도 해시값(60바이트문자)이 다 틀립니다.(장점) 
 	-->
-</beans>  
+</beans>      
