@@ -35,7 +35,7 @@ import org.springframework.test.context.web.WebAppConfiguration;
  * 제이유닛4클래스를 사용.
  * 단위테스트는 톰캣이 실행되지 않아도 작동이 되야 합니다.
  * 그래서, 테스트 클래스 상단에 servelet-context.xml 이러한 설정파일을 불러들여서 실행이 가능
- * @author 이찬홍
+ * @author 김일국
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -145,8 +145,8 @@ public class DataSourceTest {
 	public void selectMember() throws Exception {
 		//"user_name","홍길동"
 		PageVO pageVO = new PageVO();
-		pageVO.setSearch_type("user_name");
-		pageVO.setSearch_keyword("홍길동");
+		pageVO.setSearch_type("user_id");
+		pageVO.setSearch_keyword("admin");
 		//아래3개줄은 초기 페이징처리에 필요한 필수값 저장
 		pageVO.setPage(1);
 		pageVO.setPerPageNum(5);//리스트하단에 보이는 페이징번호의 개수
