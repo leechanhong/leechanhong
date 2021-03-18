@@ -35,7 +35,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 /**
  * CommonController 공통사용(Admin,Home) 컨트롤러
- * @author 이찬홍
+ * @author 김일국
  *
  */
 @Controller
@@ -79,7 +79,7 @@ public class CommonController {
 	/**
 	 * 프로필 png파일 업로드 전용 매서드 구현
 	 */
-	public void profile_upload(String user_id, HttpServletRequest request,MultipartFile file) throws Exception {
+	public void profile_upload(String user_id,HttpServletRequest request,MultipartFile file) throws Exception {
 		//프로필 첨부파일 처리(아래)
 		//직접접근이 가능한 경로에 프로필업로드 폴더를 생성(서버용 경로이기 때문에 / 사용)
 		String folderPath = request.getServletContext().getRealPath("/resources/profile");
