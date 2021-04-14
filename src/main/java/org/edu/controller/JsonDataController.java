@@ -51,10 +51,10 @@ public class JsonDataController {
 				entity = new ResponseEntity<>(memberVO, HttpStatus.OK);//200
 			} else {
 				logger.debug("계정정보 불일치");
-				entity = new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				entity = new ResponseEntity<>(HttpStatus.NO_CONTENT);//204
 			}
 		} catch (Exception e) {
-			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+			entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);//400
 		}
 		return entity;//json 데이터(Key:Value,)로 반환값 리턴
 	}
